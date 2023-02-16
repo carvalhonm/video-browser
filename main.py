@@ -16,12 +16,16 @@ _URL = sys.argv[0]
 # Get the plugin handle as an integer number.
 _HANDLE = int(sys.argv[1])
 
+server_url = xbmcplugin.getSetting( _HANDLE, "url" )
+server_authorization = xbmcplugin.getSetting( _HANDLE, "authorization" )
+
 # Free sample videos are provided by www.vidsplay.com
 # Here we use a fixed set of properties simply for demonstrating purposes
 # In a "real life" plugin you will need to get info and links to video files/streams
 # from some web-site or online service.
 
-CATEGORY_ART = 'http://www.vidsplay.com/wp-content/uploads/2017/04/crab-screenshot.jpg'
+#CATEGORY_ART = 'http://www.vidsplay.com/wp-content/uploads/2017/04/crab-screenshot.jpg'
+CATEGORY_ART = 'https://cdn.pixabay.com/photo/2014/09/03/05/10/matrix-434035_960_720.jpg'
 
 def get_url(**kwargs):
     """
@@ -48,7 +52,7 @@ def get_categories():
     :return: The list of video categories
     :rtype: types.GeneratorType
     """
-    response = requests.get('http://192.168.1.90:8081/api/v1/list-files/categories', headers={'Authorization': 'testing'})
+    response = requests.get(server_url + 'api/v1/list-files/categories', headers={'Authorization': server_authorization})
     if response.status_code == 200:
         return response.json()
     else:
@@ -71,7 +75,7 @@ def get_videos(category):
     :rtype: list
     """
 
-    response = requests.get('http://192.168.1.90:8081/api/v1/list-files/categories/' + category, headers={'Authorization': 'testing'})
+    response = requests.get(server_url + 'api/v1/list-files/categories/' + category, headers={'Authorization': server_authorization})
     if response.status_code == 200:
         return response.json()
     else:

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="Configuration">
+        <setting label="Server Url" type="text" id="url" default=""/>
+        <setting type="sep"/>
+        <setting label="Authorization" type="text" id="authorization" default=""/>
+    </category>
+</settings>
