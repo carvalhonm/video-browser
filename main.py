@@ -52,7 +52,7 @@ def get_categories():
     :return: The list of video categories
     :rtype: types.GeneratorType
     """
-    response = requests.get(server_url + 'api/v1/list-files/categories', headers={'Authorization': server_authorization})
+    response = requests.get(server_url + '/api/v1/list-files/categories', headers={'Authorization': server_authorization})
     if response.status_code == 200:
         return response.json()
     else:
@@ -75,7 +75,7 @@ def get_videos(category):
     :rtype: list
     """
 
-    response = requests.get(server_url + 'api/v1/list-files/categories/' + category, headers={'Authorization': server_authorization})
+    response = requests.get(server_url + '/api/v1/list-files/categories/' + category, headers={'Authorization': server_authorization})
     if response.status_code == 200:
         return response.json()
     else:
