@@ -1,0 +1,28 @@
+name: Semantic Release
+
+on:
+  push:
+    branches:
+      - main # or the branch you want to release from
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # It's important to fetch all commits for the semantic release
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Set the Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token

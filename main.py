@@ -236,7 +236,7 @@ def list_videos(folder, category):
         # Create a URL for a plugin recursive call.
         # Example:
         # plugin://plugin.video.example/?action=play&video=http://www.vidsplay.com/wp-content/uploads/2017/04/crab.mp4
-        url = get_url(action='play', video=video['video'])
+        url = get_url(action='play', video=video['video'], subtitles=video['subtitles'])
         # Add the list item to a virtual Kodi folder.
         # is_folder = False means that this item won't open any sub-list.
         is_folder = False
@@ -248,17 +248,27 @@ def list_videos(folder, category):
     xbmcplugin.endOfDirectory(_HANDLE)
 
 
-def play_video(path):
+def play_video(video_path, subtitle):
     """
-    Play a video by the provided path.
+    Play a video by the provided video_path.
 
-    :param path: Fully-qualified video URL
+    :param video_path: Fully-qualified video URL
+    :param subtitle: subtitle URL
     :type path: str
     """
     # Create a playable item with a path to play.
-    play_item = xbmcgui.ListItem(path=path)
+    play_item = xbmcgui.ListItem(path=video_path)
+    set_item_subtitles(play_item, subtitle)
     # Pass the item to the Kodi player.
     xbmcplugin.setResolvedUrl(_HANDLE, True, listitem=play_item)
+
+
+def set_item_subtitles(item, subtitles):
+    """Method to set subtitles"""
+    if subtitles:
+        if not isinstance(subtitles, list):
+            subtitles = [ subtitles ]
+        item.setSubtitles(subtitles)
 
 
 def router(paramstring):
@@ -282,7 +292,7 @@ def router(paramstring):
             list_videos(params['folder'], params['category'])
         elif params['action'] == 'play':
             # Play a video from a provided URL.
-            play_video(params['video'])
+            play_video(params['video'], params['subtitles'])
         else:
             # If the provided paramstring does not contain a supported action
             # we raise an exception. This helps to catch coding errors,
