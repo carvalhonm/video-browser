@@ -1,7 +1,7 @@
 # Module: main
-# Author: Roman V. M.
-# Created on: 28.11.2014
-# License: GPL v.3 https://www.gnu.org/copyleft/gpl.html
+# Author: Nuno Carvalho
+# Created on: 27-07-2023
+# License:
 """
 Example video plugin that is compatible with Kodi 19.x "Matrix" and above
 """
