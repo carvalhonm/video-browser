@@ -1,3 +1,16 @@
-[semantic_release]
-version_variable = yourpackage/__init__.py:__version__
-tag_format = {version} # Adjust if your tag format is different
+{
+  "branches": ["main"],
+  "tagFormat": "${version}",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    {
+      "path": "@semantic-release/github",
+      "assets": [
+        {"path": "build.zip", "label": "Build"}
+      ]
+    },
+    "@semantic-release/git"
+  ],
+  "repositoryUrl": "https://github.com/carvalhonm/video-bowser"
+}
