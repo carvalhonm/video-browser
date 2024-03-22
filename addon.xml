@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.carvanm.videoplaylist"
-version="2.1.0"
+version="3.0.0"
 name="My personal videos"
 provider-name="carvanm">
 <requires>
