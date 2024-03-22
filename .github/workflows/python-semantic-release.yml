@@ -2,17 +2,15 @@ name: Python Semantic Release
 
 on:
   push:
-    branches:
-      - main # Adjust this as needed for your workflow
+    tags:
+      - 'v*'
 
 jobs:
-  build-and-release:
+  create-release:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0 # Important for semantic versioning
+      - name: Checkout code
+        uses: actions/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v4
