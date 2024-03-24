@@ -1,23 +1,21 @@
-name: Python Semantic Tag
+name: Python Semantic Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*'
 
 jobs:
-  build-and-tag:
+  create-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Important for semantic versioning
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8' # Set your Python version here
+          python-version: '3.8'  # Set your Python version here
 
       - name: Install python-semantic-release
         run: pip install python-semantic-release
