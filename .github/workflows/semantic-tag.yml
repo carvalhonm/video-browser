@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-release:
+  build-and-tag:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -26,3 +26,22 @@ jobs:
         run: semantic-release publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8' # Set your Python version here
+
+    - name: Install python-semantic-release
+      run: pip install python-semantic-release
+
+    - name: Semantic Release
+      run: semantic-release publish
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
