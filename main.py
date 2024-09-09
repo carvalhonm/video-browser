@@ -25,8 +25,8 @@ SERVER_AUTH = xbmcplugin.getSetting( _HANDLE, "authorization" )
 # In a "real life" plugin you will need to get info and links to video files/streams
 # from some web-site or online service.
 
-#CATEGORY_ART = 'http://www.vidsplay.com/wp-content/uploads/2017/04/crab-screenshot.jpg'
-CATEGORY_ART = 'https://cdn.pixabay.com/photo/2014/09/03/05/10/matrix-434035_960_720.jpg'
+CATEGORY_ART = 'https://raw.githubusercontent.com/carvalhonm/video-browser/main/icon.png'
+#CATEGORY_ART = 'https://cdn.pixabay.com/photo/2014/09/03/05/10/matrix-434035_960_720.jpg'
 
 def get_url(**kwargs):
     """
