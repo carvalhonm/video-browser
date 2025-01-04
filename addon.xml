@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.carvanm.videoplaylist"
-  version="3.0.0"
+  version="3.0.1"
   name="My personal videos"
   provider-name="carvanm">
 <requires>
@@ -15,7 +15,7 @@
   <description lang="en_GB">My personal mediaplayer</description>
   <disclaimer lang="en_GB">My videos</disclaimer>
   <assets>
-    <icon>icon.png</icon>
+    <icon>icon.jpg</icon>
     <fanart>fanart.jpg</fanart>
   </assets>
   <news>Updated with latest artwork metadata</news>

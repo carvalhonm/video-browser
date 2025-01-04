@@ -25,8 +25,8 @@ SERVER_AUTH = xbmcplugin.getSetting( _HANDLE, "authorization" )
 # In a "real life" plugin you will need to get info and links to video files/streams
 # from some web-site or online service.
 
-CATEGORY_ART = 'https://raw.githubusercontent.com/carvalhonm/video-browser/main/icon.png'
-#CATEGORY_ART = 'https://cdn.pixabay.com/photo/2014/09/03/05/10/matrix-434035_960_720.jpg'
+CATEGORY_ART = 'https://raw.githubusercontent.com/carvalhonm/video-browser/main/fanart.jpg'
+CATEGORY_THUMBS = 'https://raw.githubusercontent.com/carvalhonm/video-browser/main/icon.jpg'
 
 def get_url(**kwargs):
     """
@@ -129,18 +129,9 @@ def list_folder_categories(category):
         # Set graphics (thumbnail, fanart, banner, poster, landscape etc.) for the list item.
         # Here we use the same image for all items for simplicity's sake.
         # In a real-life plugin you need to set each image accordingly.
-        list_item.setArt({'thumb': CATEGORY_ART,
-                          'icon': CATEGORY_ART,
+        list_item.setArt({'thumb': CATEGORY_THUMBS,
+                          'icon': CATEGORY_THUMBS,
                           'fanart': CATEGORY_ART})
-        # Set additional info for the list item.
-        # Here we use a category name for both properties for for simplicity's sake.
-        # setInfo allows to set various information for an item.
-        # For available properties see the following link:
-        # https://codedocs.xyz/xbmc/xbmc/group__python__xbmcgui__listitem.html#ga0b71166869bda87ad744942888fb5f14
-        # 'mediatype' is needed for a skin to display info for this ListItem correctly.
-        list_item.setInfo('video', {'title': subcategory,
-                                    'genre': subcategory,
-                                    'mediatype': 'video'})
         # Create a URL for a plugin recursive call.
         # Example: plugin://plugin.video.example/?action=listing&category=Animals
         url = get_url(action='listing', folder=category ,category=subcategory)
@@ -173,18 +164,10 @@ def list_folders():
         # Set graphics (thumbnail, fanart, banner, poster, landscape etc.) for the list item.
         # Here we use the same image for all items for simplicity's sake.
         # In a real-life plugin you need to set each image accordingly.
-        list_item.setArt({'thumb': CATEGORY_ART,
-                          'icon': CATEGORY_ART,
+        list_item.setArt({'thumb': CATEGORY_THUMBS,
+                          'icon': CATEGORY_THUMBS,
                           'fanart': CATEGORY_ART})
-        # Set additional info for the list item.
-        # Here we use a category name for both properties for for simplicity's sake.
-        # setInfo allows to set various information for an item.
-        # For available properties see the following link:
-        # https://codedocs.xyz/xbmc/xbmc/group__python__xbmcgui__listitem.html#ga0b71166869bda87ad744942888fb5f14
-        # 'mediatype' is needed for a skin to display info for this ListItem correctly.
-        list_item.setInfo('video', {'title': folder,
-                                    'genre': folder,
-                                    'mediatype': 'video'})
+
         # Create a URL for a plugin recursive call.
         # Example: plugin://plugin.video.example/?action=listing&category=Animals
         url = get_url(action='category', folder=folder)
