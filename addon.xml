@@ -11,13 +11,11 @@
   <provides>video</provides>
 </extension>
 <extension point="xbmc.addon.metadata">
-  <summary lang="en">Personal videos disk</summary>
-  <description lang="en_GB">My personal mediaplayer</description>
-  <disclaimer lang="en_GB">My videos</disclaimer>
+  <summary>Personal videos disk</summary>
+  <description>My personal mediaplayer</description>
   <assets>
-    <icon>icon.jpg</icon>
+    <icon>icon.png</icon>
     <fanart>fanart.jpg</fanart>
   </assets>
-  <news>Updated with latest artwork metadata</news>
 </extension>
 </addon>
